@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import ImagePopup from "../Popup/ImagePopup/ImagePopup";
+import { CurrentUserContext } from "../../../../contexts/CurrentUserContext ";
 
 function Card(props) {
-  const { name, link, isLiked } = props.card;
+  const { CurrentUser } = useContext(CurrentUserContext);
+  const { name, link, likes } = props.card;
+  const isLiked = likes.some((id) => id === CurrentUser._id);
   const imageComponent = {
     title: "",
     children: <ImagePopup card={props.card} />,
