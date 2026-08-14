@@ -2,7 +2,6 @@ import { getToken } from "./token";
 
 class Api {
   constructor(options) {
-    /*this._headers = options.headers;*/
     this._baseUrl = options.baseUrl;
   }
 
@@ -132,11 +131,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "https://around-api.es.tripleten-services.com/v1",
-  /* headers: {
-    authorization: "b3797ff0-4b6a-4f12-8303-1c35135ad6a7",
-    "Content-Type": "application/json",
-  },*/
+  baseUrl: "https://api.around.ohbah.com",
 });
 
 export default api;

@@ -1,4 +1,4 @@
-export const BASE_URL = "https://se-register-api.en.tripleten-services.com/v1";
+export const BASE_URL = "https://api.around.ohbah.com";
 
 export const register = (password, email) => {
   return fetch(`${BASE_URL}/signup`, {
