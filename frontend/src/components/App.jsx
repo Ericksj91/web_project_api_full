@@ -112,6 +112,9 @@ function App() {
   }
 
   useEffect(() => {
+    if (!isLoggedIn) {
+      return;
+    }
     (async () => {
       setIsLoading(true);
       await api
@@ -126,7 +129,7 @@ function App() {
           setIsLoading(false);
         });
     })();
-  }, []);
+  }, [isLoggedIn]);
 
   function handleUpdateUser(data) {
     (async () => {
@@ -165,6 +168,9 @@ function App() {
   }
 
   useEffect(() => {
+    if (!isLoggedIn) {
+      return;
+    }
     api
       .getInitialCards()
       .then((initialCards) => {
@@ -173,7 +179,7 @@ function App() {
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [isLoggedIn]);
 
   async function handleCardLike(card) {
     const isLiked = card.likes.some((id) => id === currentUser._id);
