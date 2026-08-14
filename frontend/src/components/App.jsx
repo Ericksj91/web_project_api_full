@@ -117,7 +117,7 @@ function App() {
       await api
         .getUserInfo()
         .then((userInfo) => {
-          setCurrentUser(userInfo);
+          setCurrentUser(userInfo.data);
         })
         .catch((err) => {
           console.error(err);
@@ -134,7 +134,7 @@ function App() {
       await api
         .updateUserInfo(data)
         .then((newData) => {
-          setCurrentUser(newData);
+          setCurrentUser(newData.data);
           handleClosePopup();
         })
         .catch((err) => {
@@ -152,7 +152,7 @@ function App() {
       await api
         .updateUserAvatar(link.avatar)
         .then((newLink) => {
-          setCurrentUser(newLink);
+          setCurrentUser(newLink.data);
           handleClosePopup();
         })
         .catch((err) => {
@@ -168,7 +168,7 @@ function App() {
     api
       .getInitialCards()
       .then((initialCards) => {
-        setCards(initialCards);
+        setCards(initialCards.data);
       })
       .catch((err) => {
         console.error(err);
@@ -183,7 +183,7 @@ function App() {
       .then((newCard) => {
         setCards((state) =>
           state.map((currentCard) =>
-            currentCard._id === card._id ? newCard : currentCard,
+            currentCard._id === card._id ? newCard.data : currentCard,
           ),
         );
       })
@@ -207,7 +207,7 @@ function App() {
     await api
       .addCard(data)
       .then((newCard) => {
-        setCards((cards) => [newCard, ...cards]);
+        setCards((cards) => [newCard.data, ...cards]);
         handleClosePopup();
       })
       .catch((error) => console.error(error))
