@@ -1,10 +1,11 @@
 const jwt = require("jsonwebtoken");
+const ForbiddenError = require("../errors/forbidden-err");
 
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
 
   if (!authorization || !authorization.startsWith("Bearer ")) {
-    return res.status(403).json({ message: "Se requiere autorización" });
+    return next(new ForbiddenError("Se requiere autorización"));
   }
 
   const token = authorization.replace("Bearer ", "");
@@ -16,7 +17,7 @@ module.exports = (req, res, next) => {
       process.env.JWT_SECRET || "clave-secreta-desarrollo",
     );
   } catch (err) {
-    return res.status(403).json({ message: "Se requiere autorización" });
+    return next(new ForbiddenError("Se requiere autorización"));
   }
 
   req.user = payload;

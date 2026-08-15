@@ -1,17 +1,13 @@
-//import avatar from "../../images/avatar.jpg";
-import { useEffect, useState, useContext } from "react";
+import { useContext } from "react";
 import Popup from "./components/Popup/Popup";
 import EditAvatar from "./components/Popup/EditAvatar/EditAvatar";
 import EditProfile from "./components/Popup/EditProfile/EditProfile";
 import NewCard from "./components/Popup/NewCard/NewCard";
 import Card from "./components/Card/Card";
-import ImagePopup from "./components/Popup/ImagePopup/ImagePopup";
-import api from "../../utils/api";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function Main(props) {
-  const { currentUser, handleUpdateUser, handleUpdateAvatar } =
-    useContext(CurrentUserContext);
+  const { currentUser, handleUpdateAvatar } = useContext(CurrentUserContext);
   const newCardPopup = {
     title: "Nuevo lugar",
     children: <NewCard />,

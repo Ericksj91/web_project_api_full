@@ -15,7 +15,7 @@ export default function Popup(props) {
         >
           <img alt="Logotipo para cerrar imagen" src={close} />
         </button>
-        <h3 className="popup__title">{title}</h3>
+        {title && <h3 className="popup__title">{title}</h3>}
         {children}
       </div>
     </div>
